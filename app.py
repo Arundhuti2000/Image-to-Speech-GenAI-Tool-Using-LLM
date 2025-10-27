@@ -5,9 +5,8 @@ from typing import Any
 import requests
 import streamlit as st
 from dotenv import find_dotenv, load_dotenv
-from langchain. import chains
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from transformers import pipeline
 
 from utils.custom import css_code
@@ -51,26 +50,31 @@ def generate_text_from_image(url: str) -> str:
 
 def generate_story_from_text(scenario: str) -> str:
     """
-    A function using a prompt template and GPT to generate a short story. LangChain is also
-    used for chaining purposes
+    A function using a prompt template and GPT to generate a short story. 
+    Updated to use the current LangChain LCEL (LangChain Expression Language) approach
     :param scenario: generated text from the image
     :return: generated story from the text
     """
-    prompt_template: str = f"""
-    You are a talented story teller who can create a story from a simple narrative./
+    prompt_template = """
+    You are a talented story teller who can create a story from a simple narrative.
     Create a story using the following scenario; the story should have be maximum 50 words long;
     
     CONTEXT: {scenario}
     STORY:
     """
 
-    prompt: PromptTemplate = PromptTemplate(template=prompt_template, input_variables=["scenario"])
+    prompt = ChatPromptTemplate.from_template(prompt_template)
 
-    llm: Any = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.9)
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.9)
 
-    story_llm: Any = LLMChain(llm=llm, prompt=prompt, verbose=True)
-
-    generated_story: str = story_llm.predict(scenario=scenario)
+    # Using LCEL (LangChain Expression Language) - the modern approach
+    chain = prompt | llm
+    
+    # Invoke the chain with the scenario
+    response = chain.invoke({"scenario": scenario})
+    
+    # Extract the content from the response
+    generated_story: str = str(response.content) if response.content else ""
 
     print(f"TEXT INPUT: {scenario}")
     print(f"GENERATED STORY OUTPUT: {generated_story}")

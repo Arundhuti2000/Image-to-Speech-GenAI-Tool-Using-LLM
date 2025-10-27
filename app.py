@@ -11,13 +11,12 @@ from transformers import pipeline
 from utils.custom import css_code
 
 load_dotenv(find_dotenv())
-HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
-# Configure Gemini with v1 API (not v1beta)
+
 genai.configure(
     api_key=GOOGLE_API_KEY,
-    transport='rest',  # Use REST instead of gRPC
+    transport='rest',  
     client_options={'api_endpoint': 'generativelanguage.googleapis.com'}
 )
 
@@ -71,7 +70,7 @@ def generate_story_from_text(scenario: str) -> str:
 
     # Using native Google Gemini API
     # Using gemini-2.5-flash - latest stable fast model
-    # Must include "models/" prefix as shown in list_models()
+
     model = genai.GenerativeModel('models/gemini-2.5-flash')
     
     # Generate the story
@@ -119,13 +118,13 @@ def generate_speech_from_text(message: str) -> Any:
             print(f"   File: {audio_filename}")
             print(f"   Size: {file_size} bytes")
         else:
-            print("❌ ERROR: Audio file was not created!")
+            print("ERROR: Audio file was not created!")
                 
     except ImportError:
-        print("❌ ERROR: gTTS library not installed!")
+        print("ERROR: gTTS library not installed!")
         print("   Run: pip install gtts")
     except Exception as e:
-        print(f"❌ EXCEPTION occurred during speech generation:")
+        print(f"   EXCEPTION occurred during speech generation:")
         print(f"   Error type: {type(e).__name__}")
         print(f"   Error message: {str(e)}")
         import traceback

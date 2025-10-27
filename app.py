@@ -5,7 +5,7 @@ from typing import Any
 import requests
 import streamlit as st
 from dotenv import find_dotenv, load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from transformers import pipeline
 
@@ -13,7 +13,7 @@ from utils.custom import css_code
 
 load_dotenv(find_dotenv())
 HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 
 def progress_bar(amount_of_time: int) -> Any:
@@ -50,8 +50,8 @@ def generate_text_from_image(url: str) -> str:
 
 def generate_story_from_text(scenario: str) -> str:
     """
-    A function using a prompt template and GPT to generate a short story. 
-    Updated to use the current LangChain LCEL (LangChain Expression Language) approach
+    A function using a prompt template and Gemini Pro to generate a short story. 
+    Updated to use Google Gemini Pro instead of OpenAI
     :param scenario: generated text from the image
     :return: generated story from the text
     """
@@ -65,7 +65,8 @@ def generate_story_from_text(scenario: str) -> str:
 
     prompt = ChatPromptTemplate.from_template(prompt_template)
 
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.9)
+    # Using Google Gemini Pro instead of OpenAI
+    llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.9)
 
     # Using LCEL (LangChain Expression Language) - the modern approach
     chain = prompt | llm
@@ -73,7 +74,7 @@ def generate_story_from_text(scenario: str) -> str:
     # Invoke the chain with the scenario
     response = chain.invoke({"scenario": scenario})
     
-    # Extract the content from the response
+    # Extract the content from the response and ensure it's a string
     generated_story: str = str(response.content) if response.content else ""
 
     print(f"TEXT INPUT: {scenario}")

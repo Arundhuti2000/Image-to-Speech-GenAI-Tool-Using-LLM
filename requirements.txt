@@ -1,7 +1,7 @@
 transformers
 torch
 langchain
-openai
+langchain-google-genai
 python-dotenv
 requests
 streamlit

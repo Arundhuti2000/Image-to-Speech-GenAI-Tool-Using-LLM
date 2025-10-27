@@ -29,7 +29,7 @@ Upload an image → AI analyzes it → Creates a story → Narrates it out loud
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/GURPREETKAURJETHRA/Image-to-Speech-GenAI-Tool-Using-LLM.git
+git clone https://github.com/Arundhuti2000/Image-to-Speech-GenAI-Tool-Using-LLM.git
 cd Image-to-Speech-GenAI-Tool-Using-LLM
 ```
 
@@ -376,9 +376,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Institution: UMass Dartmouth
 - Date: October 2025
 
-**Original Project:** Gurpreet Kaur Jethra
-- GitHub: [@GURPREETKAURJETHRA](https://github.com/GURPREETKAURJETHRA)
-- LinkedIn: [Gurpreet Kaur Jethra](https://www.linkedin.com/in/gurpreetkaurjethra/)
 
 ## 🙏 Acknowledgments
 
@@ -387,19 +384,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - HuggingFace for model hosting
 - Streamlit for the amazing framework
 - The open-source community
-
-## 📞 Support
-
-**Having issues?**
-
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Search [existing issues](https://github.com/GURPREETKAURJETHRA/Image-to-Speech-GenAI-Tool-Using-LLM/issues)
-3. Create a [new issue](https://github.com/GURPREETKAURJETHRA/Image-to-Speech-GenAI-Tool-Using-LLM/issues/new)
-
-**Want to discuss?**
-
-- Open a [Discussion](https://github.com/GURPREETKAURJETHRA/Image-to-Speech-GenAI-Tool-Using-LLM/discussions)
-- Join our community chat
 
 ## ⭐ Star This Repo!
 

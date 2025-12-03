@@ -407,3 +407,6 @@ frontend/node_modules/
 *.jpg
 *.jpeg
 
+# Guides
+DEPLOYMENT_GUIDE.md
+PRESENTATION.md

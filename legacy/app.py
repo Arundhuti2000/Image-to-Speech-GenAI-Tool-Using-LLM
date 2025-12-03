@@ -28,7 +28,7 @@ def progress_bar(amount_of_time: int) -> Any:
     :param amount_of_time: time taken
     :return: None
     """
-    progress_text = "Please wait, Generative models hard at work"
+    progress_text = "Please wait, Generative models work hard"
     my_bar = st.progress(0, text=progress_text)
 
     for percent_complete in range(amount_of_time):
@@ -62,7 +62,7 @@ def generate_story_from_text(scenario: str) -> str:
     """
     prompt_template = f"""
     You are a talented story teller who can create a story from a simple narrative.
-    Create a story using the following scenario; the story should have be maximum 50 words long;
+    Create a creative and interesting story using the following scenario; the story should have be maximum 50 words long;
     
     CONTEXT: {scenario}
     STORY:

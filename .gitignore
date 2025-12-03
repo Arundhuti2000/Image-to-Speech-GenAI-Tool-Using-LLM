@@ -396,3 +396,14 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Project Specific
+backend/history/
+frontend/dist/
+frontend/node_modules/
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg
+

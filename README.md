@@ -1,6 +1,6 @@
 # StoryGen: Image to Audio Story
 
-Hey! This is a project I built to turn memories into magical stories. You just drop in some photos, pick a vibe (like "Fairy Tale" or "Sci-Fi"), and it uses AI to write a story and narrate it back to you.
+Hey! This is a project I built to turn memories into creatival and magical stories. You just drop in some photos, pick a vibe (like "Fairy Tale" or "Sci-Fi"), and it uses AI to write a story and narrate it back to you.
 
 It's built using **React** for the frontend and **FastAPI** for the backend, powered by Google's **Gemini 2.5 Flash** model.
 
